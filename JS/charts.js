@@ -31,6 +31,7 @@ function init() {
   }
   
   // Demographics Panel 
+
   function buildMetadata(sample) {
     d3.json("samples.json").then((data) => {
       var metadata = data.metadata;
@@ -46,8 +47,23 @@ function init() {
       // Use `Object.entries` to add each key and value pair to the panel
       // Hint: Inside the loop, you will need to use d3 to append new
       // tags for each key-value in the metadata.
+
+// {"id": 940, "ethnicity": "Caucasian", "gender": "F", "age": 24.0, "location": "Beaufort/NC", "bbtype": "I", "wfreq": 2.0}
+
+    // sample_metadata = {}
+    // for result in results:
+    //     sample_metadata["id"] = result[0]
+    //     sample_metadata["ethnicity"] = result[1]
+    //     sample_metadata["state"] = result[2]
+    //     sample_metadata["gender"] = result[3]
+    //     sample_metadata["age"] = result[4]
+    //     sample_metadata["location"] = result[5]
+
+    // print(sample_metadata)
+    // return jsonify(sample_metadata)
+
       Object.entries(result).forEach(([key, value]) => {
-        PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
+        PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);     
       });
   
     });
@@ -94,10 +110,11 @@ function init() {
   
       // 9. Create the layout for the bar chart. 
       var barLayout = {
-        title: 'Top 10 Bacteria Cultures Found'
+        title: 'Top 10 Bacteria Cultures Found',
+        color: "rgb(59,0,179)"
       };
       // 10. Use Plotly to plot the data with the layout. 
-      Plotly.newPlot("bar", barData, barLayout);
+      Plotly.newPlot("bar", barData, barLayout)
   
       // Deliverable 2 - Bubble Chart
   
@@ -141,21 +158,23 @@ function init() {
         mode: 'gauge+number',
         title: { text: "Belly Button Washing Frequency <br /> Scrubs Per Week" },
         gauge: {
-         axis: { range: [null, 10], tickwidth: 1, tickcolor: "black", nticks: 10 },
+         axis: { range: [null, 10], tickwidth: 2, tickcolor: "black", nticks: 10 },
          bar: { color: "black" },
          steps: [
-          { range: [0, 2], color: "red" },
-          { range: [2, 4], color: "orange" },
-          { range: [4, 6], color: "yellow"},
-          { range: [6, 8], color: "lightgreen"},
-          { range: [8, 10], color: "darkgreen"}
+          { range: [0, 2], color: "rgb(238,153,255)" },
+          { range: [2, 4], color: "rgb(204,102,255)" },
+          { range: [4, 6], color: "rgb(153,51,255)"},
+          { range: [6, 8], color: "rgb(102,25,255)"},
+          { range: [8, 10], color: "rgb(59,0,179)"}
         ],
-      }}];
+        },
+    }];
       
       
       // 5. Create the layout for the gauge chart.
       var gaugeLayout = { 
         font: { color: "black", family: "Arial" },
+        margin: { t: 25, r: 25, l: 25, b: 25 }
         
       };
   

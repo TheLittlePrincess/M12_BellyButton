@@ -3,6 +3,13 @@ body {
     background-color:lavender
   }
 
+.panel-primary>.panel-heading{
+  background-color:#4c2089;
+  }
+
+.barLayout {
+    color: rgb(104, 71, 234);
+  }
 .jumbotron {
     background-image: url("/Images/bacteria_background.png");
     background-size: 100% 100%;

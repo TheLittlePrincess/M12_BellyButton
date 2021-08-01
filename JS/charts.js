@@ -110,8 +110,7 @@ function init() {
   
       // 9. Create the layout for the bar chart. 
       var barLayout = {
-        title: 'Top 10 Bacteria Cultures Found',
-        color: "rgb(59,0,179)"
+        title: 'Top 10 Bacteria Cultures Found'
       };
       // 10. Use Plotly to plot the data with the layout. 
       Plotly.newPlot("bar", barData, barLayout)
